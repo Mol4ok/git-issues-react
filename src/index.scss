@@ -1,0 +1,138 @@
+@import "materialize-css/sass/materialize";
+
+h2 {
+  margin-top: 0;
+  span {
+    font-size: 0.8em;
+    display: inline-block;
+    text-decoration: underline;
+  }
+}
+
+.header {
+  padding: 0 2rem;
+  @extend .blue, .lighten-2;
+  &__user {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    img {
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+  }
+  ul {
+    display: flex;
+  }
+  li {
+    flex: 1;
+  }
+}
+
+.container {
+  padding: 5rem 0;
+}
+
+.brand-logo {
+  height: 100%;
+  background-color: white;
+  img {
+    height: 100%;
+  }
+}
+
+.pages {
+  margin: 10px 0;
+  button {
+    margin: 0 2px;
+    border-radius: 50%;
+    cursor: pointer;
+    &.active,
+    &:focus {
+      background-color: #000000;
+      color: #fff;
+    }
+  }
+}
+
+.user {
+  display: flex;
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  &__img {
+    width: 100px;
+    margin-right: 20px;
+    img {
+      width: 100%;
+    }
+  }
+  &__name {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+.repos {
+  &__item {
+    padding: 10px 0;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    display: flex;
+    justify-content: space-between;
+    span {
+      font-weight: normal;
+    }
+    a:hover {
+      color: #000000;
+    }
+  }
+}
+
+.issues {
+  h1 {
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  h2,
+  h3 {
+    font-size: 20px;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  h3 {
+    font-size: 18px;
+  }
+  img {
+    max-width: 100%;
+  }
+  code {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    background-color: slategrey;
+  }
+  &__item {
+    margin: 0 0 20px;
+    background-color: lightblue;
+    white-space: pre-line;
+    overflow-x: auto;
+    padding: 10px;
+  }
+  &__user {
+    height: 120px;
+    img {
+      width: 100px;
+      display: block;
+    }
+  }
+  &__login {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
