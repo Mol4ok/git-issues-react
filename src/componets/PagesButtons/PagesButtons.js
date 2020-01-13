@@ -19,7 +19,12 @@ const PagesButtons = ({ pages, changePage, currentPage }) => {
     page++
   }
 
-  return <div className="pages">{cont}</div>
+  return (
+    <div className="pages">
+      <div className="pages__title">pages</div>
+      {cont}
+    </div>
+  )
 }
 
 export default PagesButtons

@@ -66,9 +66,15 @@ const reducer = (
       const issues = { ...state.issues }
       if (issuesArr.length) {
         if (!issues[login] || !issues[login][repoName]) {
-          issues[login] = {
-            [repoName]: {
+          if (issues[login]) {
+            issues[login][repoName] = {
               pages: new Array(issuesPagesQuant).fill(null)
+            }
+          } else {
+            issues[login] = {
+              [repoName]: {
+                pages: new Array(issuesPagesQuant).fill(null)
+              }
             }
           }
         }

@@ -47,11 +47,10 @@ const getIssues = (login, repoName) => async (dispatch, getState) => {
   }
   const { git } = getState()
   const { auth } = git
-  if (git.issues[login] && git.issues[login][repoName].pages[0]) {
+  if (git.issues[login] && git.issues[login][repoName]) {
     return false
   }
   const { result: issues, code, link } = await gitApi({ path, params, auth })
-  // также сделать запрос пользователя и репо
   if (code === 200) {
     let issuesPagesQuant = link
       ? Number(link.match(/page=(\d*)>; rel="last"/)[1])
@@ -110,10 +109,10 @@ const getUser = login => async (dispatch, getState) => {
   if (git.user.login === login) {
     return false
   }
-  const { result, code } = await gitApi({ path, auth })
-  result.login = login
+  const { result: user, code } = await gitApi({ path, auth })
+  user.login = login
   if (code === 200) {
-    dispatch(setUser(result))
+    dispatch(setUser(user))
     dispatch(getRepos(login))
   }
 }
@@ -123,10 +122,10 @@ const getAuthorizationData = (login, password) => async dispatch => {
   const headers = new Headers({
     Authorization: `Basic ${btoa(`${login}:${password}`)}`
   })
-  const { result, code } = await gitApi({ path, headers })
+  const { result: authData, code } = await gitApi({ path, headers })
   if (code === 200) {
-    result.password = password
-    dispatch(setAuthorization(result))
+    authData.password = password
+    dispatch(setAuthorization(authData))
   }
 }
 

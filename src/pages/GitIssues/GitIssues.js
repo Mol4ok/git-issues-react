@@ -9,8 +9,10 @@ const GitIssues = () => {
   const dispatch = useDispatch()
   const issues = useSelector(state => state.git.issues)
   let issuesArr = issues[login] ? issues[login][repoName] : null
+
   useEffect(() => {
     dispatch(getIssues(login, repoName))
+    // eslint-disable-next-line
   }, [])
 
   return (
