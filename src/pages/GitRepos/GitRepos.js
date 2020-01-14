@@ -3,11 +3,13 @@ import { useSelector } from "react-redux"
 import UserForm from "componets/UserForm"
 import UserCard from "componets/UserCard"
 import Repos from "componets/Repos"
+import Loader from "componets/Loader"
 
 const GitRepos = () => {
   const user = useSelector(state => state.git.user)
   const { login } = user
   const repos = useSelector(state => state.git.repos)[login]
+  const reposLoader = login && repos === undefined ? true : false
   return (
     <>
       <h2>Git Repos</h2>
@@ -19,7 +21,11 @@ const GitRepos = () => {
           <UserCard userData={user} />
         </div>
       </div>
-      <div className="row">{repos && <Repos repos={repos} />}</div>
+      {reposLoader ? (
+        <Loader />
+      ) : (
+        <div className="row">{repos && <Repos repos={repos} />}</div>
+      )}
     </>
   )
 }

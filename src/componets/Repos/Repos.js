@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { getReposPage } from "actions/gitActions"
@@ -14,9 +14,12 @@ const Repos = ({ repos }) => {
     dispatch(getReposPage(user.login, page))
     setPage(page)
   }
+  useEffect(() => {
+    setPage(0)
+  }, [user.login])
   return (
     <>
-      <h2>Repositories</h2>
+      <h2>Repositories of {user.login}</h2>
       {pages > 1 && (
         <PagesButtons
           pages={pages}
