@@ -10,7 +10,7 @@ import GitIssues from "pages/GitIssues"
 const App = () => {
   return (
     <Provider store={store}>
-      <Router>
+      <Router basename="git-issues-react">
         <Header />
         <div className="container">
           <Switch>
