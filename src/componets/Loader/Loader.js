@@ -1,7 +1,6 @@
 import React from "react"
 
 const Loader = ({ type = "linear" }) => {
-  console.log(type)
   const isLinear = type === "linear"
   const isCircle = type === "circle"
   return (
